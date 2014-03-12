@@ -1,0 +1,34 @@
+
+<style>
+    /* Only necessary if you are using navbar-fixed-top */
+    body {
+      text-align:   center;
+    }
+    .form-control:focus{
+      border-color: #505050;
+    }
+</style>
+
+
+<div class="kellogg-image">
+  <img width="300" src="/assets/kellogg_logo.jpg">
+</div>
+
+<div class="kellogg-image">
+  <h1>Please Sign In</h1>
+</div>
+
+<body>
+
+  <div class="container">
+
+    <form action="/authenticate" class="form-signin" role="form">
+      <input class="form-control" placeholder="Kellogg Email" required="" autofocus="" type="text" name="email">
+      <input class="form-control" placeholder="Password" required="" type="password" name="pwd">
+      <button class="btn btn-lg btn-default btn-block" type="submit" >Sign in</button>
+    </form>
+
+  </div> <!-- /container -->
+
+
+</body>

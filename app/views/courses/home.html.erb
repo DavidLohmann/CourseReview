@@ -1,0 +1,13 @@
+<style>
+  body{
+    text-align: justify;
+  }
+
+</style>
+<% user = User.find_by(:id => session[:user_id]) %>
+
+<h1>Welcome to 1Y Course Review, <%= user.first_name %>!</h1>
+<br>
+<h3>About 1Y Course Review</h3>
+
+<h4> 1Y Course Review allows you to provide and explore detailed feedback on individual Kellogg courses. While TCEs present general reviews of courses and professors for use during class selection and bidding, these reviews often fall short of providing the firsthand perspective you and your classmates desire. Through 1Y Course Review, you are able to browse feedback provided specifically by your 1Y classmates.</h4>
