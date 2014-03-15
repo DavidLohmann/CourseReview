@@ -8,7 +8,6 @@ class ReviewsController < ApplicationController
     review.workload = params[:workload]
     review.focus = params[:focus]
     review.cases = params[:cases]
-    review.groups = params[:groups]
     review.rating = params[:rating]
     review.course_id = params[:course_id]
     review.user_id = params[:user_id]
