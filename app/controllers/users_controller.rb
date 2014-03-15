@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
 
   def new
+  @title = "Sign Up"
   end
 
   def show
+    @title = "My Profile"
     @user = User.find_by(:id => params[:user_id])
     if @user.id != session[:user_id]
-      redirect_to root_url, notice: "Please Log In to Access 1Y Course Review"
+      redirect_to root_url, notice: "Please Log In to Access Your Profile"
     end
   end
 
@@ -23,7 +25,11 @@ class UsersController < ApplicationController
     end
 
   def edit
+    @title = "Edit Profile"
     @user = User.find_by(:id => params[:user_id])
+     if @user.id != session[:user_id]
+      redirect_to root_url, notice: "Please Log In to Edit Your Profile"
+    end
   end
 
   def update

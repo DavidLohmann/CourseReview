@@ -1,27 +1,18 @@
 <div class="page-header">
-  <h1>Edit Course #<%= @course.id %></h1>
+  <h1>Edit Course - <small><%= @course.title %></small></h1>
 </div>
 
 <form action="/courses/<%= @course.id %>/update">
   <div class="form-group">
-      <label class="control-label">Select the Course Department:</label>
+      <label class="control-label">Course Department:</label>
       <div class="control-label">
         <select name="department_id" class="form-control" id="department_id">
-          <option value="<%= Department.find_by(:name => "ACCT").id %>">ACCT</option>
-          <option value="<%= Department.find_by(:name => "BLAW").id %>">BLAW</option>
-          <option value="<%= Department.find_by(:name => "DECS").id %>">DECS</option>
-          <option value="<%= Department.find_by(:name => "FINC").id %>">FINC</option>
-          <option value="<%= Department.find_by(:name => "HEMA").id %>">HEMA</option>
-          <option value="<%= Department.find_by(:name => "INTL").id %>">INTL</option>
-          <option value="<%= Department.find_by(:name => "KIEI").id %>">KIEI</option>
-          <option value="<%= Department.find_by(:name => "KPPI").id %>">KPPI</option>
-          <option value="<%= Department.find_by(:name => "MECN").id %>">MECN</option>
-          <option value="<%= Department.find_by(:name => "MEDM").id %>">MEDM</option>
-          <option value="<%= Department.find_by(:name => "MGMT").id %>">MGMT</option>
-          <option value="<%= Department.find_by(:name => "MKTG").id %>">MKTG</option>
-          <option value="<%= Department.find_by(:name => "MORS").id %>">MORS</option>
-          <option value="<%= Department.find_by(:name => "OPNS").id %>">OPNS</option>
-          <option value="<%= Department.find_by(:name => "REAL").id %>">REAL</option>
+          <option value=<%= @department.id %> selected><%=  @department.name%></option>
+
+              <% Department.all.order("name").each do |department| %>
+                  <option value=<%= Department.find_by(:name => department.name).id %>><%= department.name %></option>
+              <% end %>
+
         </select>
       </div>
   </div>
@@ -35,7 +26,7 @@
   </div>
   <div class="form-group">
     <label>Enter a Course Decription:</label>
-    <textarea value=<%= @course.description %> name="description" class="form-control input-md" rows="5" ></textarea>
+    <textarea name="description" class="form-control input-md" rows="5" ><%= @course.description %></textarea>
   </div>
   <button type="submit" class="btn btn-success btn-md">Submit Changes</button>
   or

@@ -30,12 +30,10 @@ CourseReview::Application.routes.draw do
   get "/courses/:course_id/edit" => "courses#edit"
   get "/courses/:course_id/update" => "courses#update"
 
-  # DELETE
-  get "/courses/:course_id/delete" => "courses#destroy"
-
-
   # Review-related URLs
 
   get "/reviews/create" => 'reviews#create'
+  get "/reviews/:user_id/show" => 'reviews#show'
+
 
 end

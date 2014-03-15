@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <link rel="shortcut icon" src="/assets/k.ico">
 
-  <title>1Y Course Review</title>
+  <title><%= @title || "1Y Course Review" %></title>
 
   <link rel="stylesheet" href="http://getbootstrap.com/examples/signin/signin.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.2/spacelab/bootstrap.min.css">
@@ -49,7 +49,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "1Y Course Review", "/home", :class => "navbar-brand" %>
+      <%= link_to "1Y Course Review", "", :class => "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,7 +62,7 @@
         <li><a href="/home">Home</a></li>
         <li class="dropdown">
               <a href="/courses" class="dropdown-toggle" data-toggle="dropdown">Courses <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu list-group">
                  <li><a href="/courses">All Courses</a></li>
                 <li class="divider"></li>
 
@@ -74,20 +74,18 @@
                         </a>
                     </li>
                   <% end %>
-
               </ul>
             </li>
-        <li><a href="/courses">Top Rated Courses</a></li>
         <li class="dropdown">
               <a href="/courses" class="dropdown-toggle" data-toggle="dropdown">Helpful Links <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="http://www.kellogg.northwestern.edu/serial.aspx">Serial</a></li>
-                <li><a href="https://www20.kellogg.northwestern.edu/FTMBA_Registration/">Course Bidding</a></li>
-                <li><a href="https://www.kellogg.northwestern.edu/layouts/wslogin.aspx?returnURL=ReturnURLRedirectKPlan">kPlan</a></li>
-                <li><a href="https://courses.northwestern.edu/">Blackboard</a></li>
-                <li><a href="http://www.northwestern.edu/caesar/">CAESAR</a></li>
+                <li><a href="http://www.kellogg.northwestern.edu/serial.aspx" target="_blank">Serial</a></li>
+                <li><a href="https://www20.kellogg.northwestern.edu/FTMBA_Registration/" target="_blank">Course Bidding</a></li>
+                <li><a href="https://www.kellogg.northwestern.edu/layouts/wslogin.aspx?returnURL=ReturnURLRedirectKPlan" target="_blank">kPlan</a></li>
+                <li><a href="https://courses.northwestern.edu/" target="_blank">Blackboard</a></li>
+                <li><a href="http://www.northwestern.edu/caesar/" target="_blank">CAESAR</a></li>
               </ul>
-            </li>
+        </li>
         <% end %>
       </ul>
 
@@ -95,9 +93,15 @@
         <% user = User.find_by(:id => session[:user_id]) %>
 
         <% if user.present? %>
-          <li class="navbar-text">Welcome, <%= user.first_name %>!</li>
-          <li><a href="/users/<%= user.id %>/show">My Profile</a></li>
-          <li><a href="/logout">Sign Out</a></li>
+
+          <li class="dropdown">
+              <a href="/courses" class="dropdown-toggle" data-toggle="dropdown">Hello, <%= user.first_name %>! <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/users/<%= user.id %>/show">My Profile</a></li>
+                <li><a href="/reviews/<%= user.id %>/show">My Reviews</a></li>
+                <li><a href="/logout">Sign Out</a></li>
+              </ul>
+            </li>
         <% else %>
           <li><a href="/users/new">Sign Up</a></li>
           <li><a href="/login">Sign In</a></li>
